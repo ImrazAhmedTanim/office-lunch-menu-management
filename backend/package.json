@@ -1,0 +1,28 @@
+{
+  "name": "office-lunch-menu-management",
+  "version": "1.0.0",
+  "description": "the office lunch menu management system is a web application designed to streamline the process of managing daily lunch options in an office environment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ImrazAhmedTanim/office-lunch-menu-management.git"
+  },
+  "author": "Imraz Ahmed Tanim",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ImrazAhmedTanim/office-lunch-menu-management/issues"
+  },
+  "homepage": "https://github.com/ImrazAhmedTanim/office-lunch-menu-management#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "pg": "^8.11.5"
+  }
+}
