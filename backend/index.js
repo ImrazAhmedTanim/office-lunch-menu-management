@@ -2,6 +2,7 @@ const express = require('express');
 const { createSchema, client } = require('./model/Schema');
 const dotenv = require('dotenv');
 const signupRoute = require('./route/signupRoute');
+const loginRoute = require('./route/loginRoute')
 
 const app = express();
 dotenv.config();
@@ -17,6 +18,8 @@ const startServer = async () => {
 
         // Use routes
         app.use('/', signupRoute);
+        app.use('/', loginRoute);
+
 
         const port = process.env.PORT || 4000;
         app.listen(port, () => {
