@@ -1,5 +1,12 @@
 const { client } = require('../model/Schema');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const jwtSecret = require('../config').jwtSecret;
+const generateToken = require('./generateToken');
+
+
+
 
 const signup = async (req, res, next) => {
     try {
@@ -31,7 +38,10 @@ const signup = async (req, res, next) => {
 
         const newUser = insertUserResult.rows[0];
 
-        res.status(200).json({ message: "Signup successful", user: newUser });
+        // Generate a JWT token
+        const token = generateToken(newUser);
+
+        res.status(200).json({ message: "Signup successful", user: newUser, token });
     } catch (error) {
         console.error('Error during user registration:', error);
         res.status(500).json({ message: 'Server error', error: error.message });
