@@ -2,8 +2,9 @@ const express = require('express');
 const { createSchema, client } = require('./model/Schema');
 const dotenv = require('dotenv');
 const signupRoute = require('./route/signupRoute');
-const loginRoute = require('./route/loginRoute')
-const adminMenuRoute = require('./route/adminAddMenu')
+const loginRoute = require('./route/loginRoute');
+const adminMenuRoute = require('./route/adminAddMenu');
+const dailyMenusRoute = require("./route/dailyMenusRoute");
 
 
 const app = express();
@@ -22,6 +23,7 @@ const startServer = async () => {
         app.use('/', signupRoute);
         app.use('/', loginRoute);
         app.use('/', adminMenuRoute);
+        app.use('/', dailyMenusRoute);
 
 
 
