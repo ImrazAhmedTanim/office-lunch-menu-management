@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const client = require('../model/Schema').client; // Adjust the import based on your project structure
+const client = require('../model/Schema').client; 
 const generateToken = require('./generateToken');
 
 const login = async (req, res) => {
