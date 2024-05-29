@@ -5,6 +5,7 @@ const signupRoute = require('./route/signupRoute');
 const loginRoute = require('./route/loginRoute');
 const adminMenuRoute = require('./route/adminAddMenu');
 const dailyMenusRoute = require("./route/dailyMenusRoute");
+const employeeChoicesRoute = require("./route/employeeChoicesRoute");
 
 
 const app = express();
@@ -24,6 +25,8 @@ const startServer = async () => {
         app.use('/', loginRoute);
         app.use('/', adminMenuRoute);
         app.use('/', dailyMenusRoute);
+        app.use('/', employeeChoicesRoute);
+
 
 
 
