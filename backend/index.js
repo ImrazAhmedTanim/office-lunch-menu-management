@@ -1,6 +1,8 @@
 const express = require('express');
 const { createSchema, client } = require('./model/Schema');
 const dotenv = require('dotenv');
+const cors = require('cors');
+
 const signupRoute = require('./route/signupRoute');
 const loginRoute = require('./route/loginRoute');
 const adminMenuRoute = require('./route/adminAddMenu');
@@ -9,10 +11,19 @@ const employeeChoicesRoute = require("./route/employeeChoicesRoute");
 
 
 const app = express();
-dotenv.config();
 
+dotenv.config();
+const corsOptions = {
+    origin: 'http://localhost:3000', // Frontend origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+    optionsSuccessStatus: 204,
+  };
 // Middleware to parse JSON request bodies
+app.use(cors(corsOptions));
+
 app.use(express.json());
+
 
 // Initialize the database schema and start the server
 const startServer = async () => {
@@ -30,7 +41,7 @@ const startServer = async () => {
 
 
 
-        const port = process.env.PORT || 4000;
+        const port = process.env.PORT || 5000;
         app.listen(port, () => {
             console.log(`Server is running on port ${port}`);
         });

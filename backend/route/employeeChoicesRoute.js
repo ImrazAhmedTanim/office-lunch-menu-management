@@ -5,4 +5,4 @@ const {checkAdmin} = require('../controllers/checkAdmin');
 const employeeChoicesRoute = express.Router();
 employeeChoicesRoute.get('/olmm/employeechoices',authenticateToken,checkAdmin,employeeChoices);
 
-module.exports=employeeChoicesRoute;
+module.exports = employeeChoicesRoute;

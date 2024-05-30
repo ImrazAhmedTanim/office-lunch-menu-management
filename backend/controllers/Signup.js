@@ -1,17 +1,10 @@
-const { client } = require('../model/Schema');
 const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
-
-const jwtSecret = require('../config').jwtSecret;
+const client = require('../model/Schema').client;
 const generateToken = require('./generateToken');
 
-
-
-
-const signup = async (req, res, next) => {
+const signup = async (req, res) => {
     try {
         const { name, email, password, confirmPassword } = req.body;
-        console.log('Received signup request:', req.body);
 
         if (!name || !email || !password || !confirmPassword) {
             return res.status(400).json({ message: 'All fields are required' });
@@ -38,10 +31,24 @@ const signup = async (req, res, next) => {
 
         const newUser = insertUserResult.rows[0];
 
+        // Assign the "user" role to the new user
+        const userRoleResult = await client.query(
+            'SELECT id FROM roles WHERE role_name = $1',
+            ['user']
+        );
+        const userRoleId = userRoleResult.rows[0].id;
+
+        await client.query(
+            'INSERT INTO employee_roles (employee_id, role_id) VALUES ($1, $2)',
+            [newUser.id, userRoleId]
+        );
+
+        newUser.role = 'user';  // Add role to the newUser object
+
         // Generate a JWT token
         const token = generateToken(newUser);
 
-        res.status(200).json({ message: "Signup successful", user: newUser, token });
+        res.status(200).json({ message: 'Signup successful', user: newUser, token });
     } catch (error) {
         console.error('Error during user registration:', error);
         res.status(500).json({ message: 'Server error', error: error.message });
