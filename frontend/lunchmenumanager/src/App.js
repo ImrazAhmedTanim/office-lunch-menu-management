@@ -37,7 +37,7 @@ function App() {
 
 
             <Route
-              path="/add-menu"
+              path="/addmenu"
               element={
                 <ProtectedRoute roleRequired="admin">
                   <AddMenu />
@@ -45,7 +45,7 @@ function App() {
               }
             />
             <Route
-              path="/employee-choices"
+              path="/employeechoices"
               element={
                 <ProtectedRoute roleRequired="admin">
                   <EmployeeChoices />
@@ -53,7 +53,7 @@ function App() {
               }
             />
             <Route
-              path="/daily-menu"
+              path="/dailymenu"
               element={
                 <ProtectedRoute>
                   <DailyMenu />
@@ -61,7 +61,7 @@ function App() {
               }
             />
             <Route
-              path="/select-lunch"
+              path="/selectlunch"
               element={
                 <ProtectedRoute>
                   <SelectLunch />

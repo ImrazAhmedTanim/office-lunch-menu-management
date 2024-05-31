@@ -1,17 +1,9 @@
-const client = require('../model/Schema').client; 
+const express = require('express');
+const {authenticateToken} = require ("../controllers/AuthenticateToken");
+const {checkAdmin} = require('../controllers/checkAdmin');
+const {adminMenuAdding} = require ("../controllers/adminMenuAdding");
+const { selectLunch } = require('../controllers/selectLunch');
+const selectLunchRoute = express.Router();
+selectLunchRoute.post('/olmm/selectlunch',authenticateToken,selectLunch);
 
-const selectLunch =  async (req, res) => {
-    const {  employeeId,menuId, date } = req.body;
-
-    try {
-        const result = await client.query(
-            'INSERT INTO employee_choices (employee_id, menu_id, choice_date) VALUES ($1, $2, $3) RETURNING *',
-            [employeeId, menuId, date]
-        );
-        res.status(201).json(result.rows[0]);
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-};
-
-module.exports = {selectLunch};
+module.exports=selectLunchRoute;

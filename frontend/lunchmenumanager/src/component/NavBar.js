@@ -18,12 +18,12 @@ const NavBar = () => {
               <span className="text-gray-300 hover:text-white cursor-pointer" onClick={handleLogout}>Logout</span>
               {role === 'admin' && (
                 <>
-                  <Link to="/add-menu" className="text-gray-300 hover:text-white">Add Menu</Link>
-                  <Link to="/employee-choices" className="text-gray-300 hover:text-white">Employee Choices</Link>
+                  <Link to="/addmenu" className="text-gray-300 hover:text-white">Add Menu</Link>
+                  <Link to="/employeechoices" className="text-gray-300 hover:text-white">Employee Choices</Link>
                 </>
               )}
-              <Link to="/daily-menu" className="text-gray-300 hover:text-white">Daily Menu</Link>
-              <Link to="/select-lunch" className="text-gray-300 hover:text-white">Select Lunch</Link>
+              <Link to="/dailymenu" className="text-gray-300 hover:text-white">Daily Menu</Link>
+              <Link to="/selectlunch" className="text-gray-300 hover:text-white">Select Lunch</Link>
             </>
           ) : (
             <Link to="/login" className="text-gray-300 hover:text-white">Login</Link>

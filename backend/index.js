@@ -8,6 +8,7 @@ const loginRoute = require('./route/loginRoute');
 const adminMenuRoute = require('./route/adminAddMenu');
 const dailyMenusRoute = require("./route/dailyMenusRoute");
 const employeeChoicesRoute = require("./route/employeeChoicesRoute");
+const selectLunchRoute =require("./route/selectLunchRoute");
 
 
 const app = express();
@@ -37,6 +38,7 @@ const startServer = async () => {
         app.use('/', adminMenuRoute);
         app.use('/', dailyMenusRoute);
         app.use('/', employeeChoicesRoute);
+        app.use('/', selectLunchRoute);
 
 
 
